@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import Floors from "./components/Floors";
+import Shafts from "./components/Shafts";
+import { getElevators, getFloors } from "./utils/settingsReader";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [floorCount, setFloorCount] = useState(getFloors())
+    const [shaftCount, setShaftCount] = useState(getElevators())
+
+    const [floor_need, setFloor] = useState(1) // from 1 to {floorCount}
+
+    const Floor = (floor) => {
+        setFloor(floor)
+    }
+
+    return (
+        <div className="App">
+            <Shafts floorCount={floorCount} shaftCount={shaftCount} floor_need={floor_need}/>
+            <Floors floorCount={floorCount}/>
+        </div>
+    );
 }
 
 export default App;

@@ -1,38 +1,121 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+#root {
+    width: fit-content;
+}
+
 .App {
-  text-align: center;
+    width: fit-content;
+    min-width: 40vw;
+    min-height: 40vh;
+    border: 2px solid gray;
+
+    display: flex;
+    margin: 0 auto;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.floor_wrapper {
+    display: flex;
+    flex-direction: column-reverse;
+    flex-grow: 40;
+    max-width: 150px;
+
+    border-left: 2px solid brown;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.floor {
+    display: flex;
+    min-width: 70px;
+    flex-grow: 1;
+    align-items: center;
+
+    background-color: rgba(120, 180, 210, 0.5);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.floor__panel {
+    margin-left: 5px;
+    display: flex;
+    gap: 5px;
+    align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.floor__button {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    background-color: orange;
+    cursor: pointer;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.floor__button:hover {
+    background-color: orangered;
+}
+
+.floor + .floor {
+    border-bottom: 1px solid blueviolet;
+}
+
+.shafts_wrapper {
+    display: flex;
+    flex-grow: 60;
+    width: 20px;
+
+    background-color: rgba(140, 160, 110, 0.5);
+}
+
+.shaft {
+    height: 100%;
+    display: flex;
+    flex-grow: 1;
+
+    position: relative;
+}
+
+.shaft + .shaft {
+    border-left: 1px solid blueviolet;
+}
+
+.elevator {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: darkgreen;
+}
+
+.elevator__panel {
+    display: flex;
+    margin: 8px auto;
+    align-self: flex-start;
+    font-size: 25px;
+    line-height: 25px;
+    align-items: center;
+    gap: 7px;
+}
+
+.elevator__state {
+    width: 17px;
+    height: 17px;
+}
+
+.elevator__state.up {
+    transform: rotate(-90deg);
+}
+
+.elevator__state.down {
+    transform: rotate(90deg);
 }
